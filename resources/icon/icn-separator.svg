@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icn-separator</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Main" transform="translate(-714.000000, -1360.000000)" fill="#B7B7B7">
+            <g id="about" transform="translate(0.000000, 961.000000)">
+                <g id="content" transform="translate(420.000000, 339.000000)">
+                    <g id="sparator" transform="translate(208.000000, 60.000000)">
+                        <path d="M92,6 C88,6 88,6.15171415e-16 92,0 C90.8332029,0 90.5,6 92,6 Z M92,6 C90.763932,9.80422607 85.0575929,7.9501241 86.2936609,4.14589803 C85.9331008,5.25558799 91.5364745,7.42658477 92,6 Z M92,6 C95.236068,8.35114101 91.7093565,13.205243 88.4732885,10.854102 C89.4172471,11.5399281 93.2135255,6.88167788 92,6 Z M92,6 C95.2766082,3.70569425 98.7180668,8.62060652 95.4414586,10.9149123 C96.3972428,10.245665 93.2287281,5.13963535 92,6 Z M92,6 C90.763932,2.19577393 96.4702711,0.341671969 97.7063391,4.14589803 C97.345779,3.03620808 91.5364745,4.57341523 92,6 Z" id="icn-separator"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

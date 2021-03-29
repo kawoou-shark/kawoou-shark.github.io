@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>kawoou &amp; shark</title>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="title" content="kawoou &amp; shark">
+    <meta name="description" content="안정원 ♡ 김현정">
+
+    <!-- facebook -->
+    <meta property="og:title" content="kawoou &amp; shark">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="https://kawoou-shark.us">
+    <meta property="og:site_name" content="kawoou &amp; shark">
+    <meta property="og:description" content="안정원 ♡ 김현정">
+
+    <!-- twitter -->
+    <meta name="twitter:title" content="kawoou &amp; shark">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:url" content="https://kawoou-shark.us">
+    <meta name="twitter:url" content="안정원 ♡ 김현정">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-apple.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/favicon-safari.svg" color="#ff909d">
+    <meta name="msapplication-TileColor" content="#ff909d">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- css -->
+    <link rel="stylesheet" href="libs/css-reset/reset.min.css">
+    <link rel="stylesheet" href="libs/FlexMasonry/flexmasonry.min.css">
+    <link rel="stylesheet" href="libs/hamburgers/hamburgers.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- js -->
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=uc9y7xqk8d"></script>
+    <script type="text/javascript" src="libs/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/jquery.easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="libs/jquery.visibilityChanged/visibilityChanged.js"></script>
+    <script type="text/javascript" src="libs/FlexMasonry/flexmasonry.min.js"></script>
+    <script type="text/javascript" src="libs/clipboard.js/clipboard.min.js"></script>
+    <script type="text/javascript" src="js/scroll-snap.js?v=202103290016"></script>
+    <script type="text/javascript" src="js/photo-slide.js?v=202103290016"></script>
+    <script type="text/javascript" src="js/main.js?v=202103290016"></script>
+</head>
+<body draggable="false">
+    <div class="container">
+        <header class="menu-container">
+            <div class="menu-area">
+                <button class="hamburger hamburger--spin" type="button">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+            <ul class="menu">
+                <li class="item focus" data-target=".main-container">Main</li>
+                <li class="item" data-target=".intro-container">Intro</li>
+                <li class="item" data-target=".timeline-container">Timeline</li>
+                <li class="item" data-target=".gallery-container">Gallery</li>
+                <li class="item" data-target=".map-container">Map</li>
+                <li class="item" data-target=".send-container">Send</li>
+            </ul>
+        </header>
+
+        <div class="content-container">
+            <section class="main-container">
+                <div class="main-image-wrap">
+                    <img src="resources/image/bg-intro.png" />
+                </div>
+                <div class="main-wrap">
+                    <div class="main-title-area">
+                        <div class="main-title-wrap">
+                            <h1>가을의 시작을</h1>
+                            <h2>저희와 함께해주세요</h2>
+                        </div>
+                    </div>
+                    <div class="main-content-area">
+                        <div class="remain-time-wrap">
+                            <span class="remain-time">- days - hours - minutes - seconds</span>
+                        </div>
+                        <div class="menu-wrap">
+                            <ul class="menu">
+                                <li class="item" data-target=".intro-container">INTRO</li>
+                                <li class="item" data-target=".timeline-container">TIMELINE</li>
+                                <li class="item" data-target=".gallery-container">GALLERY</li>
+                                <li class="item" data-target=".map-container">MAP</li>
+                                <li class="item" data-target=".send-container">SEND</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="intro-container">
+                <div class="intro-wrap">
+                    <div class="intro-content-area inner-content">
+                        <h1>저희의 결혼식에 초대합니다</h1>
+                        <div class="separator"></div>
+                        <span>안정원과 김현정이 만나 가을의 시작부터 함께하려합니다.<br>아름다운 시작을 축복해주시면 더 없는 기쁨이 되겠습니다.</span>
+                        <h4>2021. 09. 05. Sunday - PM 02:00<br>AVANI Central Busan</h4>
+                    </div>
+                </div>
+            </section>
+            <section class="timeline-container">
+                <div class="timeline-header-space"></div>
+
+                <!-- 중간 라인 -->
+                <div class="timeline-line-area">
+                    <div class="base">
+                        <div class="line"></div>
+                    </div>
+                    <div class="overlay">
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+                <ul class="timeline-list">
+                    <li class="header">
+                        <div class="group">
+                            <div class="content">
+                                <span>2019. 01. 30.</span>
+                                <h1>한겨울에 찾아온 봄</h1>
+                            </div>
+                        </div>
+                        <div class="group"></div>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="item">
+                        <div class="group">
+                            <div class="image">
+                                <a href="resources/image/20190228/main.jpg" class="photo-slide" data-group="20190228">
+                                    <img src="resources/image/20190228/main.thumbnail.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="content">
+                                <span>2019. 02. 28.</span>
+                                <h1>겨울 일본 여행</h1>
+                            </div>
+                            <div class="images">
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/1.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/1.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/2.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/2.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/3.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/3.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/4.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/4.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/5.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/5.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/6.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/6.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/7.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/7.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/8.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/8.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/9.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/9.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/10.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/10.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190228/11.jpg" class="photo-slide" data-group="20190228">
+                                        <img src="resources/image/20190228/11.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="item">
+                        <div class="group">
+                            <div class="content">
+                                <span>2019. 04. 14.</span>
+                                <h1>HAVE A NICE DAY</h1>
+                            </div>
+                            <div class="images">
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190414/1.jpg" class="photo-slide" data-group="20190414">
+                                        <img src="resources/image/20190414/1.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190414/2.jpg" class="photo-slide" data-group="20190414">
+                                        <img src="resources/image/20190414/2.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190414/3.jpg" class="photo-slide" data-group="20190414">
+                                        <img src="resources/image/20190414/3.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190414/4.jpg" class="photo-slide" data-group="20190414">
+                                        <img src="resources/image/20190414/4.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190414/5.jpg" class="photo-slide" data-group="20190414">
+                                        <img src="resources/image/20190414/5.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190414/6.jpg" class="photo-slide" data-group="20190414">
+                                        <img src="resources/image/20190414/6.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190414/7.jpg" class="photo-slide" data-group="20190414">
+                                        <img src="resources/image/20190414/7.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="image">
+                                <a href="resources/image/20190414/main.jpg" class="photo-slide" data-group="20190414">
+                                    <img src="resources/image/20190414/main.thumbnail.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="item">
+                        <div class="group">
+                            <div class="image">
+                                <a href="resources/image/20190531/main.jpg" class="photo-slide" data-group="20190531">
+                                    <img src="resources/image/20190531/main.thumbnail.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="content">
+                                <span>2019. 05. 31.</span>
+                                <h1>여름 일본 여행</h1>
+                            </div>
+                            <div class="images">
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190531/1.jpg" class="photo-slide" data-group="20190531">
+                                        <img src="resources/image/20190531/1.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190531/2.jpg" class="photo-slide" data-group="20190531">
+                                        <img src="resources/image/20190531/2.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190531/3.jpg" class="photo-slide" data-group="20190531">
+                                        <img src="resources/image/20190531/3.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190531/4.jpg" class="photo-slide" data-group="20190531">
+                                        <img src="resources/image/20190531/4.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190531/5.jpg" class="photo-slide" data-group="20190531">
+                                        <img src="resources/image/20190531/5.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190531/6.jpg" class="photo-slide" data-group="20190531">
+                                        <img src="resources/image/20190531/6.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190531/7.jpg" class="photo-slide" data-group="20190531">
+                                        <img src="resources/image/20190531/7.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20190531/8.jpg" class="photo-slide" data-group="20190531">
+                                        <img src="resources/image/20190531/8.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="item">
+                        <div class="group">
+                            <div class="content">
+                                <span>2019. 10. 12.</span>
+                                <h1>할로윈데이</h1>
+                            </div>
+                            <div class="images">
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191012/1.jpg" class="photo-slide" data-group="20191012">
+                                        <img src="resources/image/20191012/1.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191012/2.jpg" class="photo-slide" data-group="20191012">
+                                        <img src="resources/image/20191012/2.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191012/3.jpg" class="photo-slide" data-group="20191012">
+                                        <img src="resources/image/20191012/3.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191012/4.jpg" class="photo-slide" data-group="20191012">
+                                        <img src="resources/image/20191012/4.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191012/5.jpg" class="photo-slide" data-group="20191012">
+                                        <img src="resources/image/20191012/5.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191012/6.jpg" class="photo-slide" data-group="20191012">
+                                        <img src="resources/image/20191012/6.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="image">
+                                <a href="resources/image/20191012/main.jpg" class="photo-slide" data-group="20191012">
+                                    <img src="resources/image/20191012/main.thumbnail.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="item">
+                        <div class="group">
+                            <div class="image">
+                                <a href="resources/image/20191015/main.jpg" class="photo-slide" data-group="20191015">
+                                    <img src="resources/image/20191015/main.thumbnail.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="content">
+                                <span>2019. 10. 15.</span>
+                                <h1>가을 제주도 여행</h1>
+                            </div>
+                            <div class="images">
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191015/1.jpg" class="photo-slide" data-group="20191015">
+                                        <img src="resources/image/20191015/1.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191015/2.jpg" class="photo-slide" data-group="20191015">
+                                        <img src="resources/image/20191015/2.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191015/3.jpg" class="photo-slide" data-group="20191015">
+                                        <img src="resources/image/20191015/3.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191015/4.jpg" class="photo-slide" data-group="20191015">
+                                        <img src="resources/image/20191015/4.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20191015/5.jpg" class="photo-slide" data-group="20191015">
+                                        <img src="resources/image/20191015/5.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="item">
+                        <div class="group">
+                            <div class="content">
+                                <span>2020. 05. 09.</span>
+                                <h1>여름 제주도 여행</h1>
+                            </div>
+                            <div class="images">
+                                <div class="image-wrap">
+                                    <a href="resources/image/20200509/1.jpg" class="photo-slide" data-group="20200509">
+                                        <img src="resources/image/20200509/1.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20200509/2.jpg" class="photo-slide" data-group="20200509">
+                                        <img src="resources/image/20200509/2.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20200509/3.jpg" class="photo-slide" data-group="20200509">
+                                        <img src="resources/image/20200509/3.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20200509/4.jpg" class="photo-slide" data-group="20200509">
+                                        <img src="resources/image/20200509/4.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20200509/5.jpg" class="photo-slide" data-group="20200509">
+                                        <img src="resources/image/20200509/5.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20200509/6.jpg" class="photo-slide" data-group="20200509">
+                                        <img src="resources/image/20200509/6.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20200509/7.jpg" class="photo-slide" data-group="20200509">
+                                        <img src="resources/image/20200509/7.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20200509/8.jpg" class="photo-slide" data-group="20200509">
+                                        <img src="resources/image/20200509/8.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20200509/9.jpg" class="photo-slide" data-group="20200509">
+                                        <img src="resources/image/20200509/9.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="image">
+                                <a href="resources/image/20200509/main.jpg" class="photo-slide" data-group="20200509">
+                                    <img src="resources/image/20200509/main.thumbnail.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="spacer"></li>
+                    <li class="item">
+                        <div class="group">
+                            <div class="image">
+                                <a href="resources/image/20210327/main.jpg" class="photo-slide" data-group="20210327">
+                                    <img src="resources/image/20210327/main.thumbnail.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <div class="content">
+                                <span>2021. 03. 27.</span>
+                                <h1>대관령 여행</h1>
+                            </div>
+                            <div class="images">
+                                <div class="image-wrap">
+                                    <a href="resources/image/20210327/1.jpg" class="photo-slide" data-group="20210327">
+                                        <img src="resources/image/20210327/1.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20210327/2.jpg" class="photo-slide" data-group="20210327">
+                                        <img src="resources/image/20210327/2.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20210327/3.jpg" class="photo-slide" data-group="20210327">
+                                        <img src="resources/image/20210327/3.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20210327/4.jpg" class="photo-slide" data-group="20210327">
+                                        <img src="resources/image/20210327/4.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20210327/5.jpg" class="photo-slide" data-group="20210327">
+                                        <img src="resources/image/20210327/5.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20210327/6.jpg" class="photo-slide" data-group="20210327">
+                                        <img src="resources/image/20210327/6.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20210327/7.jpg" class="photo-slide" data-group="20210327">
+                                        <img src="resources/image/20210327/7.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="image-wrap">
+                                    <a href="resources/image/20210327/8.jpg" class="photo-slide" data-group="20210327">
+                                        <img src="resources/image/20210327/8.thumbnail.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="footer"></li>
+                </ul>
+            </section>
+            <section class="gallery-container">
+                <div class="header inner-content">
+                    <h1>Gallery</h1>
+                    <div class="separator"></div>
+                </div>
+                <div class="grid">
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=1" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=1" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=2" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=2" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=3" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=3" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=4" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=4" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=5" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=5" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=6" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=6" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=7" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=7" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=8" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=8" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x530?sig=9" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x530?sig=9" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=10" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=10" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=11" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=11" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=12" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=12" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=13" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=13" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x530?sig=14" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x530?sig=14" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=15" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=15" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=16" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=16" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=17" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=17" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=18" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=18" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=19" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=19" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x530?sig=20" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x530?sig=20" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=21" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=21" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x530?sig=22" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x530?sig=22" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=23" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=23" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=24" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=24" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=25" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=25" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x530?sig=26" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x530?sig=26" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=27" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=27" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=28" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=28" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x530?sig=29" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x530?sig=29" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/300x530?sig=30" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/300x530?sig=30" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inner">
+                            <a href="https://source.unsplash.com/random/530x300?sig=31" class="photo-slide" data-group="gallery">
+                                <img src="https://source.unsplash.com/random/530x300?sig=31" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="map-container">
+                <div class="map-content-spacer"></div>
+                <div class="map-content-wrap">
+                    <div class="map-content inner-content">
+                        <h1>오시는 길</h1>
+                        <div class="separator"></div>
+                        <span><b>AVANI Central Busan</b> 00층 0000홀<br>부산 남구 전포대로 133, 국제금융센터 3번출구</span>
+                    </div>
+                </div>
+                <div id="map"></div>
+            </section>
+            <section class="send-container">
+                <div class="send-content-wrap">
+                    <div class="send-content inner-content">
+                        <h1>마음 전하실 곳</h1>
+                        <div class="separator"></div>
+                        <span>코로나로 인해 부득이하게 계좌번호를 기재하게 되어<br>대단히 죄송하게 생각하고 있습니다.<br>어려운 시기에 축복해주셔서 감사합니다.</span>
+                        <div class="buttons">
+                            <button id="send-he">신랑측</button><button id="send-she">신부측</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="modal-send-he">
+        <div class="modal-content inner-content">
+            <h1>신랑측</h1>
+            <div class="separator"></div>
+            <div class="buttons">
+                <button id="send-he-address" data-clipboard-text="우리은행 1002-248-155340">우리은행 1002-248-155340 (예금주: 안정원)</button>
+            </div>
+            <div class="buttons has-mobile">
+                <button id="send-he-toss">토스로 보내기</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-send-she">
+        <div class="modal-content inner-content">
+            <h1>신부측</h1>
+            <div class="separator"></div>
+            <div class="buttons">
+                <button id="send-she-address" data-clipboard-text="신한은행 110-441-098250">신한은행 110-441-098250 (예금주: 김현정)</button>
+            </div>
+            <div class="buttons has-mobile">
+                <button id="send-she-kakaopay">카카오페이로 보내기</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDdK0vucd7PTaeGaKV9roB7GwYQZ_edHmY",
+            // authDomain: "kawoou-shark.us",
+            projectId: "kawoou-shark",
+            // storageBucket: "kawoou-shark.appspot.com",
+            // messagingSenderId: "162504347115",
+            appId: "1:162504347115:web:d1278376295207940b9dae",
+            measurementId: "G-T8GN7RGXCX"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        const analytics = firebase.analytics();
+    </script>
+</body>
+</html>
