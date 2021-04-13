@@ -21,6 +21,32 @@ body.mobile .has-mobile {
     display: inherit;
 }
 
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+    opacity: 1;
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+}
+.loading-container > * {
+    padding: 20px;
+}
+.load .loading-container {
+    opacity: 0;
+}
+
 .container {
     opacity: 0;
     transition: opacity 1s;
@@ -1081,6 +1107,10 @@ i.close:before {
     border-top-color: #fff;
     animation: loading-spin 1s ease-in-out infinite;
     -webkit-animation: loading-spin 1s ease-in-out infinite;
+}
+.loading.dark {
+    border-color: rgba(0, 0, 0, .3);
+    border-top-color: #000;
 }
 @keyframes loading-spin {
     to { -webkit-transform: rotate(360deg); }

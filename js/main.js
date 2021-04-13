@@ -37,7 +37,13 @@ $(document).ready(() => {
         setTimeout(() => {
             const element = $('section.main-container > .main-image-wrap img');
             element.one('load', () => {
-                $(document.body).addClass('load');
+                setTimeout(() => {
+                    $(document.body).addClass('load');
+                    setTimeout(() => {
+                        $('.loading-container').hide();
+                    }, 1000);
+                }, 500);
+
                 analytics.logEvent('visible_main', {
                     pixelRatio: pixelRatio,
                     ieVersion: ieVersion,
