@@ -308,12 +308,12 @@ $(document).ready(() => {
 
 $(document).ready(() => {
     const map = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(35.1484595, 129.0632157),
+        center: new naver.maps.LatLng(35.1482643, 129.0654411),
         zoom: 15
     });
 
     const marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(35.1484595, 129.0632157),
+        position: new naver.maps.LatLng(35.1482643, 129.0654411),
         map: map
     });
 });
