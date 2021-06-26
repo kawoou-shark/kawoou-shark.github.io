@@ -7,6 +7,7 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    background: white;
 }
 body.scroll-block {
     position: fixed;
@@ -379,6 +380,12 @@ section.intro-container .intro-content-area.active > * {
     line-height: 38px;
     opacity: 1;
 }
+section.intro-container .intro-content-area.large {
+    display: block;
+}
+section.intro-container .intro-content-area.small {
+    display: none;
+}
 @media screen and (max-width: 1000px) {
     section.intro-container .intro-content-area {
         margin-top: 200%;
@@ -389,6 +396,12 @@ section.intro-container .intro-content-area.active > * {
     section.intro-container .intro-content-area.active > * {
         line-height: 20px;
         opacity: 1;
+    }
+    section.intro-container .intro-content-area.large {
+        display: none;
+    }
+    section.intro-container .intro-content-area.small {
+        display: block;
     }
 }
 
