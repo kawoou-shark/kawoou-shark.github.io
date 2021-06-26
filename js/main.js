@@ -388,14 +388,14 @@ $(document).ready(() => {
     });
 
     $('#send-he-toss').click(() => {
-        location.href = 'https://ul.toss.im?scheme=' + encodeURIComponent('supertoss://send?bank=' + encodeURIComponent('우리은행') + '&accountNo=1002248155340');
+        location.href = 'https://ul.toss.im?scheme=' + encodeURIComponent('supertoss://send?bank=' + encodeURIComponent('농협') + '&accountNo=60701452116320');
         analytics.logEvent('click_send_toss', {
             target: 'he'
         });
     });
-    $('#send-she-kakaopay').click(() => {
-        location.href = 'https://qr.kakaopay.com/281006011108459851009293';
-        analytics.logEvent('click_send_kakaopay', {
+    $('#send-she-toss').click(() => {
+        location.href = 'https://ul.toss.im?scheme=' + encodeURIComponent('supertoss://send?bank=' + encodeURIComponent('국민은행') + '&accountNo=113210489506');
+        analytics.logEvent('click_send_toss', {
             target: 'she'
         });
     });
