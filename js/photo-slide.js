@@ -476,23 +476,53 @@ class PhotoSlide {
 
     _deferLoadImage(slideElement, currentIndex) {
         const items = slideElement.find('.item');
-        [items.eq(currentIndex - 1), items.eq(currentIndex), items.eq(currentIndex + 1)]
-            .map((element) => element.find('img'))
-            .forEach((element) => {
-                const src = element.attr('data-src');
-                if (!src) return;
+        items.each((index, element) => {
+            const imageElement = $(element).find('img');
 
-                element.attr('data-src', '');
-                element.attr('src', src);
+            const src = imageElement.attr('data-src') || imageElement.attr('src');
+            if (!src) return;
 
-                element.parent().append('<div class="loading"></div>');
-                element.one('load', () => {
-                    element.parent().find('.loading').remove();
+            var targetAttr, sourceAttr;
+            if (currentIndex - 1 <= index && index <= currentIndex + 1) {
+                targetAttr = 'src';
+                sourceAttr = 'data-src';
+            } else {
+                targetAttr = 'data-src';
+                sourceAttr = 'src';
+            }
+
+            imageElement.attr(sourceAttr, '');
+            imageElement.attr(targetAttr, src);
+
+            if (targetAttr === 'src') {
+                imageElement.parent().append('<div class="loading"></div>');
+                imageElement.one('load', () => {
+                    imageElement.parent().find('.loading').remove();
                 }).each((_, e) => {
                     if (e.complete) {
                         $(e).trigger('load');
                     }
                 });
-            });
+            }
+        });
+
+        // [items.eq(currentIndex - 1), items.eq(currentIndex), items.eq(currentIndex + 1)]
+        //     .map((element) => element.find('img'))
+        //     .forEach((element) => {
+        //         const src = element.attr('data-src');
+        //         if (!src) return;
+
+        //         element.attr('data-src', '');
+        //         element.attr('src', src);
+
+        //         element.parent().append('<div class="loading"></div>');
+        //         element.one('load', () => {
+        //             element.parent().find('.loading').remove();
+        //         }).each((_, e) => {
+        //             if (e.complete) {
+        //                 $(e).trigger('load');
+        //             }
+        //         });
+        //     });
     }
 }
