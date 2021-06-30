@@ -296,12 +296,29 @@ $(document).ready(() => {
 });
 
 $(document).ready(() => {
-    FlexMasonry.init('section.gallery-container .grid', {
-        breakpointCols: {
-            'min-width: 960px': 5,
-            'min-width: 768px': 4,
-            'min-width: 576px': 3,
-            'min-width: 320px': 2
+    const finishLoading = () => {
+        FlexMasonry.init('section.gallery-container .grid', {
+            breakpointCols: {
+                'min-width: 960px': 5,
+                'min-width: 768px': 4,
+                'min-width: 576px': 3,
+                'min-width: 320px': 2
+            }
+        });
+    };
+
+    $(window).scroll(() => {
+        if ($('section.gallery-container').hasClass('loaded')) {
+            return;
+        }
+
+        const activeOffset = $('section.gallery-container').offset().top - window.innerHeight;
+        const top = $(document).scrollTop();
+
+        if (top >= activeOffset) {
+            finishLoading();
+            
+            $('section.gallery-container').addClass('loaded');
         }
     });
 });
