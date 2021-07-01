@@ -308,17 +308,11 @@ $(document).ready(() => {
     };
 
     $(window).scroll(() => {
-        if ($('section.gallery-container').hasClass('loaded')) {
-            return;
-        }
-
         const activeOffset = $('section.gallery-container').offset().top - window.innerHeight;
         const top = $(document).scrollTop();
 
         if (top >= activeOffset) {
             finishLoading();
-            
-            $('section.gallery-container').addClass('loaded');
         }
     });
 });
