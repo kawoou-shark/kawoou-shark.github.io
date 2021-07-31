@@ -325,7 +325,7 @@ section.main-container > .main-wrap {
 }
 .main-content-area > .menu-wrap ul.menu > li.item {
     display: inline-block;
-    margin: 0 34px;
+    margin: 0 29px;
     cursor: pointer;
     transition: color 0.4s;
     -webkit-transition: color 0.4s;
@@ -415,6 +415,39 @@ section.intro-container .intro-content-area.small {
     }
     section.intro-container .intro-content-area.small {
         display: block;
+    }
+}
+
+section.live-container {
+    position: relative;
+    /*min-height: 100vh;*/
+    overflow: hidden;
+}
+section.live-container > .live-content-top-spacer {
+    height: 50px;
+}
+section.live-container > .live-content-wrap {
+    margin: 50px 10% 80px 10%;
+}
+section.live-container > .live-content-wrap > .live-area {
+    display: none;
+    margin-top: 38px;
+}
+section.live-container > .live-content-wrap > .live-area > img {
+    width: 100%;
+}
+section.live-container.waiting > .live-content-wrap > .live-area.waiting {
+    display: block;
+}
+section.live-container.imminent > .live-content-wrap > .live-area.imminent {
+    display: block;
+}
+section.live-container.now > .live-content-wrap > .live-area.now {
+    display: block;
+}
+@media screen and (max-width: 1000px) {
+    section.live-container > .live-content-wrap {
+        margin: 40px 0;
     }
 }
 
