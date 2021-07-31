@@ -320,7 +320,8 @@ $(document).ready(() => {
 $(document).ready(() => {
     const map = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(35.1482643, 129.0654411),
-        zoom: 15
+        zoom: 15,
+        draggable: false
     });
 
     const marker = new naver.maps.Marker({
