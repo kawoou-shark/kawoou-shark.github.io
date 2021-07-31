@@ -60,16 +60,16 @@ $(document).ready(() => {
 });
 
 // Snap scrolling
-$(document).ready(() => {
-    const snap = new ScrollSnap({
-        duration: 400
-    });
-    snap.addContainer($('.main-container'));
-    snap.addContainer($('.intro-container'));
-    // snap.addContainer($('.timeline-container'));
-    // snap.addContainer($('.gallery-container'));
-    // snap.addContainer($('.map-container'));
-});
+// $(document).ready(() => {
+//     const snap = new ScrollSnap({
+//         duration: 400
+//     });
+//     snap.addContainer($('.main-container'));
+//     snap.addContainer($('.intro-container'));
+//     snap.addContainer($('.timeline-container'));
+//     snap.addContainer($('.gallery-container'));
+//     snap.addContainer($('.map-container'));
+// });
 
 // Main timer
 $(document).ready(() => {
