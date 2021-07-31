@@ -467,7 +467,7 @@ section.timeline-container > .timeline-line-area {
 }
 @media screen and (max-width: 1000px) {
     section.timeline-container > .timeline-header-space {
-        height: calc(50vh - 42px);
+        height: calc(30vh - 42px);
     }
     section.timeline-container > .timeline-line-area {
         height: calc(100% - 50vh + 42px - 18px);
@@ -525,7 +525,7 @@ section.timeline-container ul.timeline-list > li.spacer {
 }
 section.timeline-container ul.timeline-list > li.footer {
     position: relative;
-    height: 60vh;
+    height: 30vh;
 }
 section.timeline-container ul.timeline-list > li.footer:before {
     position: absolute;
@@ -572,7 +572,7 @@ section.timeline-container ul.timeline-list > li .group > .content > h1 {
     }
     section.timeline-container ul.timeline-list > li.footer {
         position: relative;
-        height: 60vh;
+        height: 20vh;
     }
     section.timeline-container ul.timeline-list > li .group:nth-child(1) {
         text-align: right;
