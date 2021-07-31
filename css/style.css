@@ -1199,6 +1199,9 @@ section.send-container > .send-content-wrap {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-backface-visibility: hidden;
     -moz-transform: translate3d(0, 0, 0);
+    transition: all 0.4s cubic-bezier(0, 1, 0.5, 1);
+    -webkit-transition: all 0.4s cubic-bezier(0, 1, 0.5, 1);
+    -moz-transition: all 0.4s cubic-bezier(0, 1, 0.5, 1);
     object-fit: contain;
 }
 ._photo-slide-container.loaded .slide > .item > img {

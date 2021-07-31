@@ -45,10 +45,18 @@ class PhotoSlide {
             dict[groupName] = array;
         });
 
+        this._mc = new Hammer.Manager(containerElement[0], {
+            recognizers: [
+                [Hammer.Pinch, { enable: true }],
+                [Hammer.Pan, { enable: true, direction: Hammer.DIRECTION_ALL }]
+            ]
+        });
+
         this._bindDrag(containerElement, slideElement);
         this._bindHide(containerElement, slideElement);
         this._bindButtons(containerElement, slideElement);
         this._bindKeyboard(containerElement, slideElement);
+        this._bindPinch(containerElement, slideElement);
     }
 
     onClick(callback) {
@@ -199,26 +207,47 @@ class PhotoSlide {
     }
 
     _bindDrag(containerElement, slideElement) {
-        var isTouching = false;
         var startX = -1;
         var lastX = -1;
+        var startY = -1;
+        var lastY = -1;
+        var startScale = 1.0;
+        var startMoveX = -1;
+        var startMoveY = -1;
         var moveDirection = 'NONE';
-        slideElement.bind('touchstart', (event) => {
-            const x = event.touches[0].clientX;
-            const y = event.touches[0].clientY;
+        var imageElement = null;
+
+        const clamp = (value, min, max) => {
+            return Math.min(Math.max(min, value), max);
+        };
+
+        this._mc.on('panstart', (event) => {
+            const x = event.pointers[0].x;
+            const y = event.pointers[0].y;
             if (this._containsImgElement(event.target, x, y)) {
                 containerElement.addClass('dragging');
 
-                isTouching = true;
                 startX = x;
                 lastX = x;
+                startY = y;
+                lastY = y;
                 moveDirection = 'NONE';
+
+                if (containerElement.hasClass('swipe-locked')) {
+                    const currentIndex = parseInt(slideElement.attr('data-index'));
+                    imageElement = slideElement.find('.item').eq(currentIndex).find('img');
+                    startScale = (parseFloat(imageElement.attr('data-scale')) || 1.0);
+                    startMoveX = parseInt(imageElement.attr('data-move-x')) || 0;
+                    startMoveY = parseInt(imageElement.attr('data-move-y')) || 0;
+                }
             }
         });
-        slideElement.bind('touchmove', (event) => {
-            if (!isTouching) return;
 
-            const x = event.touches[0].clientX;
+        this._mc.on('panmove', (event) => {
+            if (!containerElement.hasClass('dragging')) return;
+
+            const x = event.pointers[0].x;
+            const y = event.pointers[0].y;
             if (Math.abs(x - lastX) > 4) {
                 if (x > lastX) {
                     moveDirection = 'LEFT';
@@ -227,47 +256,68 @@ class PhotoSlide {
                 }
             }
             lastX = x;
+            lastY = y;
 
-            if (moveDirection === 'NONE') {
-                return;
+            const deltaX = x - startX;
+            const deltaY = y - startY;
+            if (containerElement.hasClass('swipe-locked')) {
+                const scale = startScale.toString();
+                const rect = imageElement[0].getBoundingClientRect();
+                const sizeX = rect.width - $(document.body).width();
+                const sizeY = Math.max((rect.width / imageElement[0].naturalWidth * imageElement[0].naturalHeight) - $(document.body).height(), 0);
+                const moveX = clamp(startMoveX + deltaX, -sizeX / 2, sizeX / 2);
+                const moveY = clamp(startMoveY + deltaY, -sizeY / 2, sizeY / 2);
+                
+                const cssValue = 'translateX(' + moveX + 'px) translateY(' + moveY + 'px) translateZ(0) scale(' + scale + ', ' + scale + ')';
+                imageElement.css('-webkit-transform', cssValue);
+                imageElement.css('-moz-transform', cssValue);
+                imageElement.css('transform', cssValue);
+                imageElement.attr('data-move-x', moveX.toString());
+                imageElement.attr('data-move-y', moveY.toString());
+                console.log(sizeY, moveY);
+            } else {
+                if (moveDirection === 'NONE') return;
+
+                const currentIndex = parseInt(slideElement.attr('data-index'))
+                slideElement.find('.item').eq(0).removeClass('transition').css({
+                    'margin-left': 'calc(' + (-currentIndex * 100).toString() + '% + ' + deltaX.toString() + 'px)'
+                });
             }
-
-            const delta = x - startX;
-            const currentIndex = parseInt(slideElement.attr('data-index'))
-            slideElement.find('.item').eq(0).removeClass('transition').css({
-                'margin-left': 'calc(' + (-currentIndex * 100).toString() + '% + ' + delta.toString() + 'px)'
-            });
         });
-        slideElement.bind('touchend', (event) => {
-            if (!isTouching) return;
-            isTouching = false;
 
-            containerElement.removeClass('dragging');
-            switch (moveDirection) {
-                case 'LEFT':
-                    if (lastX > startX) {
-                        if (this._hasPrev(slideElement)) {
-                            this._prev(containerElement, slideElement, true);
+        this._mc.on('panend pancancel', (event) => {
+            if (!containerElement.hasClass('dragging')) return;
+
+            if (containerElement.hasClass('swipe-locked')) {
+
+            } else {
+                containerElement.removeClass('dragging');
+                switch (moveDirection) {
+                    case 'LEFT':
+                        if (lastX > startX) {
+                            if (this._hasPrev(slideElement)) {
+                                this._prev(containerElement, slideElement, true);
+                            } else {
+                                this._reset(containerElement, slideElement, true);
+                            }
                         } else {
                             this._reset(containerElement, slideElement, true);
                         }
-                    } else {
-                        this._reset(containerElement, slideElement, true);
-                    }
-                    break;
-                case 'RIGHT':
-                    if (lastX > startX) {
-                        this._reset(containerElement, slideElement, true);
-                    } else {
-                        if (this._hasNext(slideElement)) {
-                            this._next(containerElement, slideElement, true);
-                        } else {
+                        break;
+                    case 'RIGHT':
+                        if (lastX > startX) {
                             this._reset(containerElement, slideElement, true);
+                        } else {
+                            if (this._hasNext(slideElement)) {
+                                this._next(containerElement, slideElement, true);
+                            } else {
+                                this._reset(containerElement, slideElement, true);
+                            }
                         }
-                    }
-                    break;
-                default:
-                    break;
+                        break;
+                    default:
+                        break;
+                }
             }
         });
     }
@@ -303,6 +353,73 @@ class PhotoSlide {
                     this._hide(containerElement, slideElement);
                 default:
                     break;
+            }
+        });
+    }
+    _bindPinch(containerElement, slideElement) {
+        var imageElement = null;
+        var startScale = 1.0;
+        var startX = -1;
+        var startY = -1;
+
+        const clamp = (value, min, max) => {
+            return Math.min(Math.max(min, value), max);
+        };
+
+        this._mc.on('pinchstart', (event) => {
+            if (containerElement.hasClass('dragging')) {
+                containerElement.removeClass('dragging');
+                this._reset(containerElement, slideElement, true);
+            }
+
+            console.log('pinchstart');
+            containerElement.addClass('pinching');
+            containerElement.addClass('swipe-locked');
+
+            const currentIndex = parseInt(slideElement.attr('data-index'));
+            imageElement = slideElement.find('.item').eq(currentIndex).find('img');
+            startScale = (parseFloat(imageElement.attr('data-scale')) || 1.0);
+            startX = parseInt(imageElement.attr('data-move-x')) || 0;
+            startY = parseInt(imageElement.attr('data-move-y')) || 0;
+        });
+
+        this._mc.on('pinchmove', (event) => {
+            if (!containerElement.removeClass('pinching')) return;
+
+            const scale = (Math.min(startScale * event.scale, 2.5)).toString();
+            var cssValue = 'scale(' + scale + ', ' + scale + ')';
+            imageElement.css('-webkit-transform', cssValue);
+            imageElement.css('-moz-transform', cssValue);
+            imageElement.css('transform', cssValue);
+            imageElement.attr('data-scale', scale);
+
+            const rect = imageElement[0].getBoundingClientRect();
+            const sizeX = rect.width - $(document.body).width();
+            const sizeY = Math.max((rect.width / imageElement[0].naturalWidth * imageElement[0].naturalHeight) - $(document.body).height(), 0);
+            const x = clamp(startX + event.deltaX, -sizeX / 2, sizeX / 2);
+            const y = clamp(startY + event.deltaY, -sizeY / 2, sizeY / 2);
+            cssValue = 'translateX(' + x + 'px) translateY(' + y + 'px) translateZ(0) ' + cssValue;
+            imageElement.css('-webkit-transform', cssValue);
+            imageElement.css('-moz-transform', cssValue);
+            imageElement.css('transform', cssValue);
+            imageElement.attr('data-move-x', x.toString());
+            imageElement.attr('data-move-y', y.toString());
+        });
+
+        this._mc.on('pinchend pinchcancel', (event) => {
+            if (!containerElement.removeClass('pinching')) return;
+
+            const scale = (startScale * event.scale).toString();
+            if (scale <= 1) {
+                imageElement.css('-webkit-transform', '');
+                imageElement.css('-moz-transform', '');
+                imageElement.css('transform', '');
+                imageElement.attr('data-scale', '1');
+                imageElement.attr('data-move-x', '0');
+                imageElement.attr('data-move-y', '0');
+                containerElement.removeClass('swipe-locked');
+            } else {
+                containerElement.addClass('swipe-locked');
             }
         });
     }
@@ -364,6 +481,8 @@ class PhotoSlide {
 
         this._updateButtons(containerElement, slideElement);
         this._deferLoadImage(slideElement, parseInt(slideElement.attr('data-index')));
+
+        this._resetZoom(slideElement);
     }
 
     _next(containerElement, slideElement, animated) {
@@ -412,6 +531,8 @@ class PhotoSlide {
 
         this._updateButtons(containerElement, slideElement);
         this._deferLoadImage(slideElement, parseInt(slideElement.attr('data-index')));
+
+        this._resetZoom(slideElement);
     }
 
     _reset(containerElement, slideElement, animated) {
@@ -432,7 +553,20 @@ class PhotoSlide {
         firstItem.css('margin-left', (-currentIndex * 100).toString() + '%');
         this._updateButtons(containerElement, slideElement);
         this._deferLoadImage(slideElement, currentIndex);
+
+        this._resetZoom(slideElement);
     }
+
+    _resetZoom(slideElement) {
+        slideElement.find('.item img')
+            .css('-webkit-transform', '')
+            .css('-moz-transform', '')
+            .css('transform', '')
+            .attr('data-scale', '1')
+            .attr('data-move-x', '0')
+            .attr('data-move-y', '0')
+            .removeClass('swipe-locked');
+    } 
 
     _updateButtons(containerElement, slideElement) {
         if (this._hasPrev(slideElement)) {
