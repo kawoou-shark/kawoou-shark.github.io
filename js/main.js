@@ -96,6 +96,14 @@ $(document).ready(() => {
             const day = parseInt((-distance) / (60 * 60 * 24)) - 6;
             textElement.html('전쟁 시작 D+' + day.toString() + '... <a href="https://instagram.com/jjeoong_69">근황보기</a>');
         }
+
+        if (distance > 60 * 60 * 2) {
+            $('section.live-container').removeClass('imminent now').addClass('waiting');
+        } else if (distance > 0) {
+            $('section.live-container').removeClass('waiting now').addClass('imminent');
+        } else {
+            $('section.live-container').removeClass('waiting imminent').addClass('now');
+        }
     }, 500);
 });
 
