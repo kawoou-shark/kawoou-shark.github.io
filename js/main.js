@@ -215,6 +215,15 @@ $(document).ready(() => {
     }
 });
 
+// Live
+$(document).ready(() => {
+    new Twitch.Player('twitch-embed', {
+        channel: 'gravity__visual'
+    });
+
+    $('#chat-embed').attr('src', 'https://www.twitch.tv/embed/gravity__visual/chat?parent=' + $('#twitch-embed iframe').attr('src').split('&parent=')[1]);
+});
+
 $(document).ready(() => {
     const baseLine = $('section.timeline-container > .timeline-line-area > .base');
     const overlayLine = $('section.timeline-container > .timeline-line-area > .overlay');

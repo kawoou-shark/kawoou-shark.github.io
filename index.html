@@ -42,12 +42,13 @@
     <link rel="stylesheet" href="libs/css-reset/reset.min.css">
     <link rel="stylesheet" href="libs/FlexMasonry/flexmasonry.min.css">
     <link rel="stylesheet" href="libs/hamburgers/hamburgers.css">
-    <link rel="stylesheet" href="css/style.css?v=202108010200">
+    <link rel="stylesheet" href="css/style.css?v=202108032003">
 
     <!-- js -->
     <script type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=uc9y7xqk8d"></script>
+    <script type="text/javascript" src="https://player.twitch.tv/js/embed/v1.js"></script>
     <script type="text/javascript" src="libs/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="libs/jquery.easing/jquery.easing.min.js"></script>
     <script type="text/javascript" src="libs/jquery.visibilityChanged/visibilityChanged.js"></script>
@@ -56,7 +57,7 @@
     <script type="text/javascript" src="libs/hammer.js/hammer.min.js"></script>
     <!-- <script type="text/javascript" src="js/scroll-snap.js?v=202103290016"></script> -->
     <script type="text/javascript" src="js/photo-slide.js?v=202108010131"></script>
-    <script type="text/javascript" src="js/main.js?v=202107312336"></script>
+    <script type="text/javascript" src="js/main.js?v=202108031928"></script>
 </head>
 <body draggable="false">
     <div class="loading-container">
@@ -144,7 +145,12 @@
                         <img src="resources/image/live/imminent.png" alt="">
                     </div>
                     <div class="live-area now">
-                        
+                        <div class="video">
+                            <div id="twitch-embed" class="video-wrap"></div>
+                        </div>
+                        <iframe id="chat-embed" class="chat"
+                                allowfullscreen="" scrolling="no" frameborder="0" allow="autoplay; fullscreen"></iframe>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </section>

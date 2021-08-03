@@ -443,8 +443,30 @@ section.live-container.imminent > .live-content-wrap > .live-area.imminent {
     display: block;
 }
 section.live-container.now > .live-content-wrap > .live-area.now {
+    position: relative;
     display: block;
 }
+section.live-container.now > .live-content-wrap > .live-area.now > .video {
+    float: left;
+    width: calc(100% - 350px);
+}
+section.live-container.now > .live-content-wrap > .live-area.now > .video > .video-wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-bottom: 56.25%;   
+}
+section.live-container.now > .live-content-wrap > .live-area.now > .video iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+section.live-container.now > .live-content-wrap > .live-area.now > iframe.chat {
+    position: absolute;
+    width: 350px;
+    height: 100%;
+}
+
 @media screen and (max-width: 1000px) {
     section.live-container > .live-content-wrap {
         margin: 40px 0;
