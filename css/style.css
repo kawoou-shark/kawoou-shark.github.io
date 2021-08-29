@@ -433,7 +433,7 @@ section.live-container > .live-content-wrap > .live-area {
     display: none;
     margin-top: 38px;
 }
-section.live-container > .live-content-wrap > .live-area > img {
+section.live-container > .live-content-wrap > .live-area img {
     width: 100%;
 }
 section.live-container.waiting > .live-content-wrap > .live-area.waiting {
@@ -1001,6 +1001,16 @@ section.send-container > .send-content-wrap {
     background: white;
     border-radius: 24px;
 }
+@media screen and (max-width: 1000px) {
+    #modal-send-he > .modal-content,
+    #modal-send-she > .modal-content {
+        padding: 40px 24px;
+    }
+
+    .modal-content.inner-content .buttons button {
+        width: 100%;
+    }
+}
 
 /* Inner Content */
 .inner-content {
@@ -1123,7 +1133,7 @@ section.send-container > .send-content-wrap {
         margin: 24px 16px 0 16px;
     }
     .inner-content .buttons {
-        margin-top: 24px;
+        margin: 24px 16px 0 16px;
     }
     .inner-content span + .buttons {
         margin-top: 12px;

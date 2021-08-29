@@ -403,13 +403,25 @@ $(document).ready(() => {
         }
     });
 
-    new ClipboardJS('#send-he-address').on('success', () => {
+    new ClipboardJS('#send-he-address1').on('success', () => {
         analytics.logEvent('click_copy_address', {
             target: 'he'
         });
         alert('복사되었습니다.');
     });
-    new ClipboardJS('#send-she-address').on('success', () => {
+    new ClipboardJS('#send-he-address2').on('success', () => {
+        analytics.logEvent('click_copy_address', {
+            target: 'he'
+        });
+        alert('복사되었습니다.');
+    });
+    new ClipboardJS('#send-she-address1').on('success', () => {
+        analytics.logEvent('click_copy_address', {
+            target: 'she'
+        });
+        alert('복사되었습니다.');
+    });
+    new ClipboardJS('#send-she-address2').on('success', () => {
         analytics.logEvent('click_copy_address', {
             target: 'she'
         });
@@ -417,13 +429,13 @@ $(document).ready(() => {
     });
 
     $('#send-he-toss').click(() => {
-        location.href = 'https://ul.toss.im?scheme=' + encodeURIComponent('supertoss://send?bank=' + encodeURIComponent('농협') + '&accountNo=60701452116320');
+        location.href = 'https://ul.toss.im?scheme=' + encodeURIComponent('supertoss://send?bank=' + encodeURIComponent('우리') + '&accountNo=1002248155340');
         analytics.logEvent('click_send_toss', {
             target: 'he'
         });
     });
     $('#send-she-toss').click(() => {
-        location.href = 'https://ul.toss.im?scheme=' + encodeURIComponent('supertoss://send?bank=' + encodeURIComponent('국민은행') + '&accountNo=113210489506');
+        location.href = 'https://ul.toss.im?scheme=' + encodeURIComponent('supertoss://send?bank=' + encodeURIComponent('카카오뱅크') + '&accountNo=3333051624875');
         analytics.logEvent('click_send_toss', {
             target: 'she'
         });
